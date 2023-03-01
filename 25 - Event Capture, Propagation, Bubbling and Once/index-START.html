@@ -7,6 +7,7 @@
 </head>
 <body class="bod">
 
+    <!-- ripples -->
   <div class="one">
     <div class="two">
       <div class="three">
@@ -43,6 +44,27 @@
 
 <button></button>
 <script>
+  // ripple/bubble effects
+
+  const divs = document.querySelectorAll("div");
+  const button = document.querySelector("button");
+
+  function logText(e) {
+    console.log(this.classList.value);
+    // e.stopPropagation(); // stop bubbling
+  }
+
+  // capture down instead of up 
+  divs.forEach(div => div.addEventListener("click", logText, {
+    capture: false, // by default is false, which is capture up instead of down
+    once: true // runs the events once
+  }));
+
+  button.addEventListener("click", () => {
+    console.log("click!!!");
+  }, {
+    once: true
+  })
 
 </script>
 </body>
